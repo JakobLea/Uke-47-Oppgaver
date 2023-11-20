@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature App</title>
+</head>
+<body>
+
+<label for="monthInput">Enter month:</label>
+<input type="text" id="monthInput" placeholder="e.g., January">
+
+<button onclick="getTemperature()">Get Temperature</button>
+
+<p id="result"></p>
+
+<script>
+    function getTemperature() {
+        let month = document.getElementById("monthInput").value;
+
+        // Make AJAX call to the server
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let temperature = xhr.responseText;
+                document.getElementById("result").innerHTML = "Average temperature for " + month + ": " + temperature + " °C";
+            }
+        };
+        xhr.open("GET", "/getAverageTemperature?month=" + month, true);
+        xhr.send();
+    }
+</script>
+
+</body>
+</html>
