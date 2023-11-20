@@ -16,7 +16,7 @@ public class FizzBuzz {
     }
 
     private static void printFizzBuzz(int num) {
-        // Sjekk om tallet er delelig med både 3 og 5 test
+        // Sjekk om tallet er delelig med både 3 og 5
         if (num % 3 == 0 && num % 5 == 0) {
             System.out.println("FizzBuzz");
         }
